@@ -1,3 +1,10 @@
+@import "reset";
+@import "config/color";
+@import "modules/chat_main";
+@import "modules/side_bar";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

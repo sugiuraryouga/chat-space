@@ -1,0 +1,39 @@
+.chat-main
+ .chat-main__group-info
+  .chat-main__group-info__left-box
+   %h2.chat-main__group-info__left-box__name
+    sugiura
+   %ul.chat-main__group-info__left-box__members
+    Member:
+    %li.left-box__members__member
+     ryouga
+  =link_to "#" do
+   .chat-main__group-info__edit-btn
+    Edit
+ .chat-main__messages
+  .chat-main__messages__message
+   .chat-main__messages__message__info
+    %p.chat-main__messages__message__info__name
+     ryouga
+    %p.chat-main__messages__message__info__date
+     20200202
+     22.22.32
+   %p.chat-main__messages__text
+    こんにちは
+  .chat-main__messages__message
+   .chat-main__messages__message__info
+    %p.chat-main__messages__message__info__name
+     ryouga
+    %p.chat-main__messages__message__info__date
+     20200202
+     22.22.32
+   %p.chat-main__messages__text
+    こんにちは
+ .chat-main__form
+  %form.chat-main__form__new
+   .chat-main__form__new__form-box
+    %input.chat-main__form__new__form-box__input{placeholder:"type a message",type:"text"}
+     %label.chat-main__form__new__form-box__input__label
+      %i.fa.fa-image
+      %input.chat-main__form__new__form-box__input__label__image{type:"file"}
+   %input.chat-main__form__new__submit-btn{type:"submit",value:"Send"}
