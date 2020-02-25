@@ -5,24 +5,17 @@
         =current_user.name
       %ul.side_ber__username__topitems__icons
         %li.side_ber__username__topitems__icons__new
-          =link_to "#",class:"side_ber__username__topitems__icons__new__icon" do
+          =link_to new_group_path,class:"side_ber__username__topitems__icons__new__icon" do
             %i.fa.fa-edit
           
         %li.side_ber__username__topitems__icons__edit
           =link_to edit_user_path(current_user) ,class:"side_ber__username__topitems__icons__edit__icon" do
             %i.fa.fa-cog
   .side_ber__group
-    =link_to "#",class:"side_ber__group__select" do
-      .side_ber__group__select__list
-        %p.side_ber__group__select__list__name
-          techcamp
-        %p.side_ber__group__select__list__latest-message
-          まだメッセージがありません
-    =link_to "#",class:"side_ber__group__select" do
-      .side_ber__group__select__list
-        %p.side_ber__group__select__list__name
-          techcamp
-        %p.side_ber__group__select__list__latest-message
-          まだメッセージがありません
-   
+    - current_user.groups.each do |group|
+      = link_to  group_messages_path(group),class:"side_ber__group__select" do
+        .side_ber__group__select__list__name
+          = group.name
+        .side_ber__group__select__list__latest-message
+          = group.show_last_message
           
