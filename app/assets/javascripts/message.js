@@ -56,11 +56,13 @@ $('#new_message').on('submit', function(e){
     $('.chat-main__messages').append(html);   
     $('.chat-main__messages').animate({ scrollTop: $('.chat-main__messages')[0].scrollHeight});   
     $('.chat-main__form__new')[0].reset();
-    $('.chat-main__form__new__submit-btn').prop('disabled', false);
       // $('.form__submit').prop('disabled', false);は、 htmlの仕様でsubmitボタンを一度押したらdisabled属性というボタンが押せなく属性が追加されます。 そのため、disabled属性をfalseにする記述を追加しています
     })  
     .fail(function(){
       alert('error');
     })
+    .always(function() {
+      $('.chat-main__form__new__submit-btn').prop('disabled', false);
+    });
  })
 });
