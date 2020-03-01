@@ -47,6 +47,7 @@ a{
   &__group{
     background-color: #2f3e51;
     height: calc(100vh - 100px);
+    overflow: scroll;
     &__select{
       display: block;
       padding: 20px 20px 40px 20px;
