@@ -1,14 +1,14 @@
 $(function(){ 
   var buildHTML = function(message) {
-    var upperHTML=`<div class="chat-main__messages__message" data-message-id=` + message.id + `>` +
-    `<div class="chat-main__messages__message__info">` +
-      `<div class="chat-main__messages__message__info__name">` +
-        message.user_name +
-      `</div>` +
-      `<div class="chat-main__messages__message__info__date">` +
-        message.created_at +
-      `</div>` +
-    `</div>`
+    var upperHTML=     `<div class="chat-main__messages__message">
+    <div class="chat-main__messages__message__info">
+      <div class="chat-main__messages__message__info__name">
+        ${message.user_name}
+      </div>
+      <div class="chat-main__messages__message__info__date">
+        ${message.time}
+      </div>
+    </div>`
     if (message.content && message.image) {
       //data-idが反映されるようにしている
       var html = upperHTNL+
