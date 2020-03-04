@@ -19,7 +19,8 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  # 、デプロイ時にエラーの原因となる記述の対策を行います。Uglifierというgemがあり、これはJavaScriptを軽量化するためのものです。しかし、ChatSpaceのJavaScriptで使用しているテンプレートリテラル記法（`）に対応していません。そのため、デプロイ時にエラーの原因となります。そこで、この部分をコメントアウトすることで対策します。
+  # config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
