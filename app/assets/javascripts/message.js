@@ -1,6 +1,6 @@
 $(function(){ 
   var buildHTML = function(message) {
-    var upperHTML=     `<div class="chat-main__messages__message">
+    var upperHTML=     `<div class="chat-main__messages__message" data-message-id="${message.id}">
     <div class="chat-main__messages__message__info">
       <div class="chat-main__messages__message__info__name">
         ${message.user_name}
