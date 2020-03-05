@@ -11,7 +11,7 @@ $(function(){
     </div>`
     if (message.content && message.image) {
       //data-idが反映されるようにしている
-      var html = upperHTNL+
+      var html = upperHTML+
         `<div class="chat-main__messages__tex">` +
           `<p class="chat-main__messages__text__content">` +
             message.content +
