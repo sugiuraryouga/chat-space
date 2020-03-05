@@ -14,5 +14,5 @@ CarrierWave.configure do |config|
   # ここにパケット名を入力する↓
   config.fog_directory  = 'sugiuraryouga'
 
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chat-space'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/sugiuraryouga'
 end
