@@ -33,9 +33,32 @@ namespace :deploy do
   end
 end
 
-# DSLとは、ある特定の処理における効率をあげるために特化した形の文法を擬似的に用意したプログラムです。
+# DSLとは、ある特定の処理における効率をあげるために特化しfた形の文法を擬似的に用意したプログラムです。
 # 上記のset :名前, 値について、これは言わば変数のようなものです。
 # 例えばset: Name, 'value' と定義した場合、fetch Name とすることで 'Value'が取り出せます。
 # また、一度setした値はdeploy.rbやproduction.rbなどの全域で取り出すことができます。また、ファイル内には、desc '◯◯'やtask:XX doといった記述がよく見受けられます。これは、先ほどCapfileでrequireしたものに加えて追加のタスクを記述している形です。ここで記述したものもcap deploy時に実行されることとなります。
 
 
+# secrets.yml用のシンボリックリンクを追加
+set :linked_files, %w{ config/secrets.yml }
+
+# 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+
+  desc 'upload secrets.yml'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
+    end
+  end
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
+endf
