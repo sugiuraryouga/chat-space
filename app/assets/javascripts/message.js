@@ -1,6 +1,6 @@
 $(function(){ 
   var buildHTML = function(message) {
-    console.log(message)
+
     if (message.content && message.image) {
       //data-idが反映されるようにしている
       var html =  `<div class="chat-main__messages__message" data-message-id=` + message.id + `>` +
@@ -47,9 +47,7 @@ $(function(){
           message.time +
         `</div>` +
       `</div>` +
-        `<div class="chat-main__messages__message">` +
           `<img src="` + message.image + `" class="chat-main__messages__message__image" >` +
-        `</div>` +
       `</div>`
     };
     return html;
