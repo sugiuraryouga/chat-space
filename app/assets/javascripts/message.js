@@ -1,17 +1,17 @@
 $(function(){ 
   var buildHTML = function(message) {
-    var upperHTML=     `<div class="chat-main__messages__message" data-message-id="${message.id}">
-    <div class="chat-main__messages__message__info">
-      <div class="chat-main__messages__message__info__name">
-        ${message.user_name}
-      </div>
-      <div class="chat-main__messages__message__info__date">
-        ${message.time}
-      </div>
-    </div>`
+    console.log(message)
     if (message.content && message.image) {
       //data-idが反映されるようにしている
-      var html = upperHTML+
+      var html =  `<div class="chat-main__messages__message" data-message-id=` + message.id + `>` +
+      `<div class="chat-main__messages__message__info">` +
+        `<div class="chat-main__messages__message__info__name">` +
+          message.user_name +
+        `</div>` +
+        `<div class="chat-main__messages__message__info__date">` +
+          message.time +
+        `</div>` +
+      `</div>` +
         `<div class="chat-main__messages__tex">` +
           `<p class="chat-main__messages__text__content">` +
             message.content +
@@ -21,7 +21,15 @@ $(function(){
       `</div>`
     } else if (message.content) {
       //同様に、data-idが反映されるようにしている
-      var html = upperHTML+
+      var html =  `<div class="chat-main__messages__message" data-message-id=` + message.id + `>` +
+      `<div class="chat-main__messages__message__info">` +
+        `<div class="chat-main__messages__message__info__name">` +
+          message.user_name +
+        `</div>` +
+        `<div class="chat-main__messages__message__info__date">` +
+          message.time +
+        `</div>` +
+      `</div>` +
         `<div class="chat-main__messages__message__text">` +
           `<p class="chat-main__messages__message__text__content">` +
             message.content +
@@ -30,7 +38,15 @@ $(function(){
       `</div>`
     } else if (message.image) {
       //同様に、data-idが反映されるようにしている
-      var html = upperHTML +
+      var html =  `<div class="chat-main__messages__message" data-message-id=` + message.id + `>` +
+      `<div class="chat-main__messages__message__info">` +
+        `<div class="chat-main__messages__message__info__name">` +
+          message.user_name +
+        `</div>` +
+        `<div class="chat-main__messages__message__info__date">` +
+          message.time +
+        `</div>` +
+      `</div>` +
         `<div class="chat-main__messages__message">` +
           `<img src="` + message.image + `" class="chat-main__messages__message__image" >` +
         `</div>` +
@@ -67,6 +83,7 @@ $('#new_message').on('submit', function(e){
     var reloadMessages = function() {
       //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
       var last_message_id = $('.chat-main__messages__message:last').data("message-id");
+      console.log(last_message_id)
       $.ajax({
         //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
         url: "api/messages",
